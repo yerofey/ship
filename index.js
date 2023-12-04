@@ -44,14 +44,14 @@ function verifyGitHubPayload(request, secret) {
   return signature === digest;
 }
 
-fastify.post('/webhook/:repository/:branch', async (request, reply) => {
+fastify.post('/webhook', async (request, reply) => {
   if (!verifyGitHubPayload(request, GITHUB_SECRET)) {
     return reply
       .code(403)
       .send({ success: false, message: 'Invalid signature' });
   }
 
-  const { repository, branch } = request.params;
+  const { repository, branch, folder } = request.query;
 
   // Assuming the format 'username/repo-name' for repository
   const [username, repoName] = repository.split('/');
@@ -59,7 +59,7 @@ fastify.post('/webhook/:repository/:branch', async (request, reply) => {
   // Pull and restart only if it's the specified branch
   if (branch === 'master') {
     exec(
-      `cd /path/to/${repoName} && git pull origin ${branch} && docker-compose down && docker-compose up -d`,
+      `cd ${folder} && git pull origin ${branch} && pnpm start`,
       (err, stdout, stderr) => {
         if (err) {
           reply.send({ success: false, message: stderr });
