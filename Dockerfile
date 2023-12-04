@@ -1,6 +1,5 @@
-# ---- Build Stage for Bun Application ----
 # Start with a base image that has Bun installed
-FROM ubuntu:latest as builder
+FROM ubuntu:latest
 
 # Install necessary packages including curl and unzip
 RUN apt-get update && \
@@ -22,21 +21,8 @@ RUN bun install
 # Copy the rest of your application's code
 COPY . .
 
-# Build your app (if required)
-#RUN bun run build
+# Expose the port the app runs on
+EXPOSE 3099
 
-# ---- Production Stage with Nginx ----
-# Use the official Nginx image
-FROM nginx:alpine
-
-# Copy the built application from the builder stage
-COPY --from=builder /usr/src/app/dist /usr/share/nginx/html
-
-# Copy the Nginx configuration file
-COPY config/nginx.conf /etc/nginx/nginx.conf
-
-# Expose port 80
-EXPOSE 80
-
-# Start Nginx when the container launches
-CMD ["nginx", "-g", "daemon off;"]
+# Define the command to run your app
+CMD ["bun", "run", "src/index.js"]
