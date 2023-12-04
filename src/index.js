@@ -73,6 +73,10 @@ fastify.post('/webhook/:repository/:branch', async (request, reply) => {
   }
 });
 
+fastify.get('/test', async (request, reply) => {
+  reply.send({ success: true });
+});
+
 const port = process.env.PORT;
 fastify.listen({ port }, (err) => {
   if (err) {
