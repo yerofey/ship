@@ -1,3 +1,3 @@
 # the-ship 🚢
 
-> CI/CD tool to deploy Node.js application
+> CI/CD tool to deploy Node.js application with PM2
