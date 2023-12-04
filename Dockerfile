@@ -23,7 +23,7 @@ RUN bun install
 COPY . .
 
 # Build your app (if required)
-RUN bun run build
+#RUN bun run build
 
 # ---- Production Stage with Nginx ----
 # Use the official Nginx image
