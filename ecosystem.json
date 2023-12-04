@@ -1,7 +1,7 @@
 {
   "apps": [
     {
-      "name": "the-ship",
+      "name": "ship",
       "script": "./index.js",
       "watch": true,
       "ignore_watch": [
