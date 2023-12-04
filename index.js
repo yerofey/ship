@@ -58,6 +58,7 @@ fastify.post('/webhook', async (request, reply) => {
 
   // Pull and restart only if it's the specified branch
   if (branch === 'master') {
+    console.log(`Pulling ${username}/${repoName}...`);
     exec(
       `cd ${folder} && git pull origin ${branch} && pnpm start`,
       (err, stdout, stderr) => {
