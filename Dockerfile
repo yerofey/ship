@@ -2,9 +2,9 @@
 # Start with a base image that has Bun installed
 FROM ubuntu:latest as builder
 
-# Install Bun
+# Install necessary packages including curl and unzip
 RUN apt-get update && \
-    apt-get install -y curl && \
+    apt-get install -y curl unzip && \
     curl https://bun.sh/install | bash
 
 # Set the path to include Bun
