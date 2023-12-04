@@ -1,3 +1,3 @@
-# the-ship 🚢
+# ship 🚢
 
-> CI/CD tool to deploy Node.js application with PM2
+> Github webhook script to deploy Node.js apps
