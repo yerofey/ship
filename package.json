@@ -2,6 +2,10 @@
   "name": "the-ship",
   "module": "src/index.js",
   "type": "module",
+  "scripts": {
+    "docker:build": "docker build -t the-ship .",
+    "docker:run": "docker run -d -p 3099:3099 the-ship"
+  },
   "devDependencies": {
     "bun-types": "latest",
     "nodemon": "^3.0.2"
