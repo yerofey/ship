@@ -1,11 +1,12 @@
 {
   "name": "the-ship",
-  "module": "src/index.js",
+  "version": "1.0.0",
+  "module": "index.js",
   "type": "module",
   "scripts": {
     "docker:build": "docker build -t the-ship .",
     "docker:run": "docker run -d -p 3099:3099 the-ship",
-    "start": "pm2 start index.js --name the-ship --time -i 1"
+    "start": "pm2 stop the-ship && pm2 delete the-ship && pm2 start index.js --name the-ship --time -i 1"
   },
   "devDependencies": {
     "bun-types": "latest",
