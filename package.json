@@ -6,7 +6,7 @@
   "scripts": {
     "docker:build": "docker build -t the-ship .",
     "docker:run": "docker run -d -p 3099:3099 the-ship",
-    "start": "pm2 stop the-ship && pm2 delete the-ship && pm2 start index.js --name the-ship --time -i 1"
+    "start": "pm2 restart ecosystem.config.js"
   },
   "devDependencies": {
     "bun-types": "latest",
