@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "docker:build": "docker build -t the-ship .",
-    "docker:run": "docker run -d -p 3099:3099 the-ship"
+    "docker:run": "docker run -d -p 3099:3099 the-ship",
+    "start": "pm2 start index.js --name the-ship --time --i 1"
   },
   "devDependencies": {
     "bun-types": "latest",

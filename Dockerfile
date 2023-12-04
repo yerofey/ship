@@ -25,4 +25,4 @@ COPY . .
 EXPOSE 3099
 
 # Define the command to run your app
-CMD ["bun", "run", "src/index.js"]
+CMD ["bun", "run", "index.js"]
